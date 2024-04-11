@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const ErrorController = require('./../controller/errorController');
+const error = require('./../controller/error');
 const AppError = require('../util/AppError');
 const { apiLimiter, apiLimiterUpload } = require('./../util/appLimiter');
 const helmet = require('helmet');
@@ -11,7 +11,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
-
+const user = require('./../route/user');
+const file = require('./../route/file');
+const auth = require('./../route/auth');
 
 app.use(morgan('tiny'));
 app.set('trust proxy', 1);
@@ -26,8 +28,7 @@ app.use(
 );
 
 app.use(cookieParser());
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '../view'));
+
 app.use(
   helmet({
     contentSecurityPolicy: false,
@@ -44,11 +45,13 @@ app.use(hpp());
 
 app.use(express.json());
 
-
+app.use('/api/v1/users', user);
+app.use('/api/v1/files', file);
+app.use('/api/v1/auth', auth);
 app.all('*', function (req, res, next) {
   next(new AppError(`This url has not found: ${req.originalUrl}`, 404));
 });
 
-app.use(ErrorController);
+app.use(error);
 
 module.exports = app;

@@ -12,6 +12,8 @@ const sequelize = new Sequelize(
     operatorsAliases: false,
   }
 );
+const users = require('./user');
+const files = require('./file');
 
 sequelize
   .authenticate()
@@ -23,8 +25,14 @@ sequelize
   });
 
 const db = {};
+db.users = users(sequelize, DataTypes);
+db.files = files(sequelize, DataTypes);
+
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
+db.users.hasMany(db.files);
+db.files.belongsTo(db.users);
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log('yes re-sync done!');
