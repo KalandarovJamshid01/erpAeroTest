@@ -1,0 +1,43 @@
+{
+  "name": "ximximtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KalandarovJamshid01/XimXimTest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KalandarovJamshid01/XimXimTest/issues"
+  },
+  "homepage": "https://github.com/KalandarovJamshid01/XimXimTest#readme",
+    "dependencies": {
+    "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^7.0.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.30.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.1",
+    "pm2": "^5.3.0",
+    "pug": "^3.0.2",
+    "sequelize": "^6.33.0",
+    "uuid": "^9.0.0",
+    "xss-clean": "^0.1.1"
+  }
+}
