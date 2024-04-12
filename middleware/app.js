@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const error = require('./../controller/error');
+const error = require('../util/error');
 const AppError = require('../util/AppError');
 const { apiLimiter, apiLimiterUpload } = require('./../util/appLimiter');
 const helmet = require('helmet');
