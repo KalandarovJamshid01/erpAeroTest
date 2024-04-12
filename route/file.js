@@ -1,11 +1,19 @@
 const router = require('express').Router();
-const { upload, uploadFile } = require('./../controller/file');
-
-router.route('/upload').post(upload.single('file'), uploadFile);
-router.route('/list').get();
-router.route('/delete/:id').delete();
-router.route('/download/:id').get();
-router.route('/update/:id').put();
-router.route('/:id').get();
+const { protect } = require('../controller/verify');
+const {
+  upload,
+  uploadFile,
+  getFileList,
+  getFile,
+  dowloadFile,
+  updateFile,
+  deleteFile,
+} = require('./../controller/file');
+router.route('/upload').post(protect, upload.single('file'), uploadFile);
+router.route('/list').get(protect, getFileList);
+router.route('/delete/:id').delete(protect, deleteFile);
+router.route('/download/:id').get(protect, dowloadFile);
+router.route('/update/:id').put(protect, upload.single('file'), updateFile);
+router.route('/:id').get(protect, getFile);
 
 module.exports = router;

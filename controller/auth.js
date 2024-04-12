@@ -86,7 +86,6 @@ const signInRefresh = catchErrorAsync(async (req, res) => {
 });
 const logout = catchErrorAsync(async (req, res) => {
 
-  
 });
 
 module.exports = { signUp, signIn, logout, signInRefresh };
