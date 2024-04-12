@@ -22,7 +22,7 @@ const protect = catchErrorAsync(async (req, res, next) => {
       return next(new AppError('Token is invallid', 403));
     }
 
-    const user = await users.findOne({
+    const theUser = await users.findOne({
       where: {
         id: user.id,
       },
@@ -30,7 +30,7 @@ const protect = catchErrorAsync(async (req, res, next) => {
     if (!theUser) {
       return next(new AppError('You are not register', 401));
     }
-    req.user = user;
+    req.user = theUser;
     next();
   });
 });
