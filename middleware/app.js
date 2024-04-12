@@ -10,7 +10,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-
+const session = require('express-session');
 const user = require('./../route/user');
 const file = require('./../route/file');
 const auth = require('./../route/auth');
@@ -45,8 +45,8 @@ app.use(hpp());
 
 app.use(express.json());
 
-app.use('/api/v1/users', user);
-app.use('/api/v1/files', file);
+app.use('/api/v1/user', user);
+app.use('/api/v1/file', file);
 app.use('/api/v1/auth', auth);
 app.all('*', function (req, res, next) {
   next(new AppError(`This url has not found: ${req.originalUrl}`, 404));

@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const {} = require('./../controller/file');
+const { upload, uploadFile } = require('./../controller/file');
 
-router.route('/upload').post();
+router.route('/upload').post(upload.single('file'), uploadFile);
 router.route('/list').get();
 router.route('/delete/:id').delete();
 router.route('/download/:id').get();

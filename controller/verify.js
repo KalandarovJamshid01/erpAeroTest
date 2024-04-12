@@ -17,7 +17,7 @@ const protect = catchErrorAsync(async (req, res, next) => {
   if (!token) {
     return next(new AppError('You are not login', 401));
   }
-  jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET_ACCESS, async (err, user) => {
     if (err) {
       return next(new AppError('Token is invallid', 403));
     }
