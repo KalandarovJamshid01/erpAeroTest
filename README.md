@@ -6,7 +6,7 @@
 
 # baseUrls:
 
-## /users/
+## /user/
 
 ## /auth/
 
