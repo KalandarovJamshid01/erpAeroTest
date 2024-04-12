@@ -85,7 +85,8 @@ const signInRefresh = catchErrorAsync(async (req, res) => {
   responseFunction(req, res, 200, { accessToken: newAccessToken }, 1);
 });
 const logout = catchErrorAsync(async (req, res) => {
-
+  req.session.destroy();
+  responseFunction(req, res, 200, 'Logout successful');
 });
 
 module.exports = { signUp, signIn, logout, signInRefresh };
